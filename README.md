@@ -1,2 +1,2 @@
-# polytech-gitopps
-polytech-gitopps
+# polytech-gitops
+polytech-gitops
