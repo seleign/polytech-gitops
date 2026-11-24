@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: webapp
 spec:
-  replicas: 2                  # Pod 2개
+  replicas: 3                  # Pod 2개
   selector:
     matchLabels:
       app: webapp
