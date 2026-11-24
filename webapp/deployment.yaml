@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 2                  # Pod 2개
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: 897722691159.dkr.ecr.ap-northeast-2.amazonaws.com/user77-webapp  # ★ 1단계 URI
+          ports:
+            - containerPort: 80
