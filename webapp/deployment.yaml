@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: 897722691159.dkr.ecr.ap-northeast-2.amazonaws.com/user77-webapp  # ★ 1단계 URI
+          image: 897722691159.dkr.ecr.ap-northeast-2.amazonaws.com/user77-webapp:355029a9494a9d99bb80662670a36a53779a3d1a  # ★ 1단계 URI
           ports:
             - containerPort: 80
