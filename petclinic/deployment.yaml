@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      containers:
+        - name: petclinic
+          image: petclinic:initial            # CI가 ECR 이미지로 자동 변경
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: petclinic-config        # SPRING_PROFILES_ACTIVE, MYSQL_URL, MYSQL_USER
+            - secretRef:
+                name: petclinic-db-secret     # MYSQL_PASS (Lab 3 1단계에서 kubectl로 생성)
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              memory: 1Gi
